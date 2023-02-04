@@ -10,5 +10,6 @@ export function createExpense(date, name, amount) {
     date: date,
     name: name,
     amount: convertAmount,
+    used: false,
   };
 }

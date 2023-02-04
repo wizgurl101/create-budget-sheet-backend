@@ -6,7 +6,32 @@ const main = async () => {
   try {
     const data = await getDataFromCsv();
     const expenseList = getExpenseList(data);
-    const categoryList = generateCategoryList();
+    let categoryList = generateCategoryList();
+
+    categoryList.forEach((c) => {
+      let categoryExpenses = [];
+      const keywords = c.keywords;
+
+      if (keywords.length > 0) {
+        keywords.forEach((keyword) => {
+          expenseList.forEach((expense) => {
+            if (expense.name.includes(keyword)) {
+              categoryExpenses.push(expense);
+              expense.used = true;
+            }
+          });
+        });
+      }
+
+      c.expenses = [...categoryExpenses];
+    });
+
+    const unusedExpenses = expenseList.filter(
+      (expense) => expense.used === false
+    );
+
+    let lastCategory = categoryList[categoryList.length - 1];
+    lastCategory.expenses = [...unusedExpenses];
 
     console.log(JSON.stringify(categoryList, null, 4));
   } catch (err) {
