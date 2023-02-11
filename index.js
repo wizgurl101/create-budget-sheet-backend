@@ -1,5 +1,6 @@
 import { generateCategoryList } from "./utils/category.js";
 import { getDataFromCsv } from "./utils/csv.js";
+import { exportToExcel } from "./utils/excel.js";
 import { getExpenseList } from "./utils/expenses.js";
 
 const main = async () => {
@@ -33,7 +34,9 @@ const main = async () => {
     let lastCategory = categoryList[categoryList.length - 1];
     lastCategory.expenses = [...unusedExpenses];
 
-    console.log(JSON.stringify(categoryList, null, 4));
+    // console.log(JSON.stringify(categoryList, null, 4));
+
+    exportToExcel(categoryList);
   } catch (err) {
     console.log(err);
   }
