@@ -24,12 +24,20 @@ const main = async () => {
         });
       }
 
+      categoryExpenses.sort((a, b) => {
+        return a.dateTime - b.dateTime;
+      });
+
       c.expenses = [...categoryExpenses];
     });
 
-    const unusedExpenses = expenseList.filter(
+    let unusedExpenses = expenseList.filter(
       (expense) => expense.used === false
     );
+
+    unusedExpenses.sort((a, b) => {
+      return a.dateTime - b.dateTime;
+    });
 
     let lastCategory = categoryList[categoryList.length - 1];
     lastCategory.expenses = [...unusedExpenses];

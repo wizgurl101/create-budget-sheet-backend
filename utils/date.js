@@ -19,3 +19,8 @@ export const getCurrentDateInMMDDYYYY = () => {
     monthNumShortName[currentDate.getMonth()]
   }-${currentDate.getDate()}-${currentDate.getFullYear()}`;
 };
+
+export const getDateTime = (dateString) => {
+  const date = dateString.split("/");
+  return new Date(date[2], --date[0], date[1]);
+};

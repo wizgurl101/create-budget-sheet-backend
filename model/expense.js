@@ -1,3 +1,5 @@
+import { getDateTime } from "../utils/date.js";
+
 export function createExpense(date, name, amount) {
   let convertAmount = 0.0;
   try {
@@ -10,6 +12,7 @@ export function createExpense(date, name, amount) {
     date: date,
     name: name,
     amount: convertAmount,
+    dateTime: getDateTime(date),
     used: false,
   };
 }
