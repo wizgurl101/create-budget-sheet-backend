@@ -2,6 +2,7 @@ import { generateCategoryList } from "./utils/category.js";
 import { getDataFromCsv } from "./utils/csv.js";
 import { exportToExcel } from "./utils/excel.js";
 import { getExpenseList } from "./utils/expenses.js";
+import { filterExpenseAfterDate } from "./utils/filter.js";
 
 const main = async () => {
   try {
@@ -42,9 +43,12 @@ const main = async () => {
     let lastCategory = categoryList[categoryList.length - 1];
     lastCategory.expenses = [...unusedExpenses];
 
+    const filterDate = "02/10/2023";
+    let filteredExpenses = filterExpenseAfterDate(categoryList, filterDate);
+
     // console.log(JSON.stringify(categoryList, null, 4));
 
-    exportToExcel(categoryList);
+    exportToExcel(filteredExpenses);
   } catch (err) {
     console.log(err);
   }
