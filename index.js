@@ -43,10 +43,11 @@ const main = async () => {
     let lastCategory = categoryList[categoryList.length - 1];
     lastCategory.expenses = [...unusedExpenses];
 
+    // TODO filter is not working
     const filterDate = "02/10/2023";
     let filteredExpenses = filterExpenseAfterDate(categoryList, filterDate);
 
-    // console.log(JSON.stringify(categoryList, null, 4));
+    // console.log(JSON.stringify(filteredExpenses, null, 4));
 
     exportToExcel(filteredExpenses);
   } catch (err) {
