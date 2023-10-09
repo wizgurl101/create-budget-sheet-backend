@@ -130,5 +130,5 @@ dist
 .pnp.*
 
 *.test
-/testData
-/output
+/node-util-app/testData
+/node-util-app/output
