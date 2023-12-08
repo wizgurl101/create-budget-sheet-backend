@@ -18,6 +18,7 @@
     "typescript": "^5.2.2"
   },
   "dependencies": {
+    "@google-cloud/bigquery-connection": "^3.0.1",
     "express": "^4.17.1"
   }
 }
